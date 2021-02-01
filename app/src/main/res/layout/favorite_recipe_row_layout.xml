@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="recipe"
+            type="info.imtushar.foodrecipe.data.database.entities.FavoritesEntity" />
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/favorite_row_cardView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="10dp"
+        app:strokeColor="@color/lightMediumGray"
+        app:cardBackgroundColor="@color/white"
+        app:strokeWidth="1dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp">
+
+        <LinearLayout
+            android:id="@+id/recipeInfoLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/favorite_row_image"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                loadImageFromUrl="@{recipe.result.image}"
+                android:scaleType="centerCrop" />
+
+            <LinearLayout
+
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/favorite_recipeName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/courgette"
+                    android:ellipsize="end"
+                    android:maxLines="2"
+                    android:text="@{recipe.result.title}"
+                    android:textColor="#000000"
+                    android:textSize="18sp"
+                    android:textStyle="normal" />
+
+                <TextView
+                    android:id="@+id/favorite_recipesDetails"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif"
+                    android:textStyle="normal"
+                    android:textSize="14sp"
+                    android:ellipsize="end"
+                    android:maxLines="4"
+                    parseHtml="@{recipe.result.summary}"
+                    android:layout_marginTop="16dp"
+                    android:textColor="@color/darkGray"
+                    android:lineSpacingExtra="5sp" />
+
+                <LinearLayout
+                    android:layout_marginTop="16dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:gravity="center"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:src="@drawable/ic_favorite"
+                            app:tint="@color/red" />
+
+                        <TextView
+                            android:id="@+id/favorite_recipeLikes"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="sans-serif"
+                            android:textStyle="normal"
+                            android:textSize="14sp"
+                            setNumberOfLikes="@{recipe.result.aggregateLikes}"
+                            android:textColor="#f44336"
+                            android:lineSpacingExtra="-13.8sp"
+
+                            />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:gravity="center"
+                        android:layout_marginEnd="16dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:src="@drawable/ic_access_time"
+                            app:tint="@color/yellow" />
+
+                        <TextView
+                            android:id="@+id/favorite_recipeTime"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="sans-serif"
+                            android:textStyle="normal"
+                            android:textSize="14sp"
+                            setNumberOfMinutes="@{recipe.result.readyInMinutes}"
+                            android:textColor="@color/yellow"
+                            android:lineSpacingExtra="-13.8sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:gravity="center"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:src="@drawable/ic_eco"
+                            applyVeganColor="@{recipe.result.vegan}"
+                            app:tint="@color/mediumGray" />
+
+                        <TextView
+                            android:id="@+id/favorite_recipeVegan"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="sans-serif"
+                            android:textStyle="normal"
+                            android:textSize="14sp"
+                            applyVeganColor="@{recipe.result.vegan}"
+                            android:lineSpacingExtra="-13.8sp"
+                            android:text="Vegan" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+</layout>

@@ -1,4 +1,4 @@
-package info.imtushar.foodrecipe.data.database
+package info.imtushar.foodrecipe.data.database.entities
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
